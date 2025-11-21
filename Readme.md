@@ -66,7 +66,7 @@ SOCIAL-MEDIA-CONTENT-ANALYZER/
 │   │   └── (uploaded files...)
 │   │
 │   ├── services/
-│   │   └── geminiService.js     ← (Gemini ko yaha rakho – BEST PLACE)
+│   │   └── geminiService.js     ← (Gemini service)
 │   │
 │   ├── config.js
 │   ├── server.js
