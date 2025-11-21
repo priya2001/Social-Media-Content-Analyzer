@@ -1,9 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
+import "./FileUpload.css";
 
 function FileUpload() {
   const [file, setFile] = useState(null);
-  const [text, setText] = useState("");
+  const [rawText, setRawText] = useState("");
+  const [prettyText, setPrettyText] = useState("");
   const [loading, setLoading] = useState(false);
 
   const uploadFile = async () => {
@@ -25,7 +27,8 @@ function FileUpload() {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      setText(res.data.text);
+      setRawText(res.data.rawText);
+      setPrettyText(res.data.prettyText);
     } catch (err) {
       console.error(err);
       alert("Upload failed");
@@ -35,12 +38,42 @@ function FileUpload() {
   };
 
   return (
-    <div>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-      <button onClick={uploadFile}>Upload & Extract</button>
+    <div className="main-wrapper">
+      <h1 className="title">Social Media Content Analyzer</h1>
 
-      {loading && <p>Extracting text...</p>}
-      {text && <textarea rows={15} value={text} readOnly />}
+      <div className="two-box-wrapper">
+        {/* LEFT BOX */}
+        <div className="box">
+          <h2>Upload File Input</h2>
+
+          <input
+            type="file"
+            onChange={(e) => setFile(e.target.files[0])}
+            className="file-input"
+          />
+
+          <button onClick={uploadFile} className="upload-btn">
+            Upload & Extract
+          </button>
+
+          {loading && <p>Extracting...</p>}
+
+          {rawText && (
+            <textarea value={rawText} readOnly className="output-text" />
+          )}
+        </div>
+
+        {/* RIGHT BOX */}
+        <div className="box">
+          <h2>Gemini Output</h2>
+
+          {prettyText ? (
+            <textarea value={prettyText} readOnly className="output-text" />
+          ) : (
+            <p className="placeholder">Gemini output will appear here...</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

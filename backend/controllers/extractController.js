@@ -1,35 +1,44 @@
-const Tesseract = require("tesseract.js");
-const pdfParse = require("pdf-parse");
-const fs = require("fs");
+// ==============================
+// controllers/extractController.js
+// ==============================
+import Tesseract from "tesseract.js";
+import pdfParse from "pdf-parse";
+import fs from "fs";
+import { rewriteWithGemini } from "../services/geminiService.js";
 
-// ============= IMAGE TEXT EXTRACTION =============
-exports.extractImage = async (req, res) => {
+// For Images
+export const extractTextFromImage = async (req, res) => {
   try {
-    if (!req.file)
-      return res.status(400).json({ error: "No file uploaded" });
+    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
 
-    const result = await Tesseract.recognize(req.file.path, "eng");
-    res.json({ text: result.data.text });
+    const result = await Tesseract.recognize(req.file.path, "eng", {
+      logger: (m) => console.log(m),
+    });
+
+    const rawText = result.data.text;
+    const prettyText = await rewriteWithGemini(rawText);
+
+    res.json({ rawText, prettyText });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Image extraction failed" });
   }
 };
 
-// ============= PDF TEXT EXTRACTION =============
-exports.extractPDF = async (req, res) => {
+// For PDFs
+export const extractTextFromPDF = async (req, res) => {
   try {
-    if (!req.file)
-      return res.status(400).json({ error: "No file uploaded" });
+    if (!req.file) return res.status(400).json({ error: "No file uploaded" });
 
-    const dataBuffer = fs.readFileSync(req.file.path);
-    const pdfData = await pdfParse(dataBuffer);
+    const data = fs.readFileSync(req.file.path);
+    const pdfData = await pdfParse(data);
 
-    res.json({ text: pdfData.text });
+    const rawText = pdfData.text;
+    const prettyText = await rewriteWithGemini(rawText);
+
+    res.json({ rawText, prettyText });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "PDF extraction failed" });
   }
 };
-
-

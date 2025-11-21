@@ -5,7 +5,6 @@ const extractTextController = require("../controllers/extractController");
 
 const router = express.Router();
 
-// ================= Multer Storage ==================
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, "../uploads"));
@@ -17,12 +16,15 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// ROUTES (frontend field name must be "file")
-router.post("/pdf", upload.single("file"), extractTextController.extractPDF);
-router.post("/image", upload.single("file"), extractTextController.extractImage);
+router.post(
+  "/pdf",
+  upload.single("file"),
+  extractTextController.extractTextFromPDF
+);
+router.post(
+  "/image",
+  upload.single("file"),
+  extractTextController.extractTextFromImage
+);
 
 module.exports = router;
-
-
-
-
