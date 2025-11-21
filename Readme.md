@@ -37,13 +37,9 @@ Uses **tesseract.js** to extract text from images.
 - Modern component-based UI
 - Drag-and-drop upload implemented manually
 
-**Frontend Scripts**
-npm run dev
-npm run build
-npm run preview
 
-markdown
-Copy code
+
+
 
 ---
 
@@ -57,12 +53,8 @@ Copy code
 - CORS enabled
 - Nodemon for development
 
-**Backend Scripts**
-npm start
-npm run dev
 
-yaml
-Copy code
+
 
 ---
 
@@ -81,12 +73,8 @@ Social-Media-Content-Analyzer
 ├── src/
 │ ├── components/
 │ └── App.jsx
-└── package.json
+└── package.json 
 
-yaml
-Copy code
-
----
 
 ## 🌐 API Endpoint
 
@@ -94,17 +82,14 @@ Copy code
 
 Uploads a document and returns extracted text.
 
-**Response Example**
+## Response Example
 {
 "success": true,
 "type": "pdf" or "image",
 "text": "Extracted text here..."
-}
+} 
 
-yaml
-Copy code
 
----
 
 ## ▶️ How to Run Locally
 
@@ -112,38 +97,21 @@ Copy code
 git clone <your-repository-url>
 cd Social-Media-Content-Analyzer
 
-shell
-Copy code
+
 
 ### 2️⃣ Install dependencies
 
-#### Backend:
-cd backend
-npm install
+### Backend
+1. `cd frontend`
+2. `npm install`
+3. `npm start`
 
-shell
-Copy code
 
-#### Frontend:
-cd ../frontend
-npm install
+### Frontend
+1. `cd frontend`
+2. `npm install`
+3. `npm run dev`
 
-shell
-Copy code
-
-### 3️⃣ Start the servers
-
-#### Start Backend:
-npm run dev
-
-shell
-Copy code
-
-#### Start Frontend:
-npm run dev
-
-yaml
-Copy code
 
 Frontend → http://localhost:5173  
 Backend → http://localhost:5000  
@@ -176,7 +144,5 @@ Upload:
 
 ---
 
-## 📜 License
-MIT License
 
 
