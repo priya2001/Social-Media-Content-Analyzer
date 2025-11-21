@@ -10,26 +10,26 @@ This project fulfills the requirements of the **Social Media Content Analyzer** 
 
 ### **1. Document Upload**
 
-* Upload **PDF files** and **image files** (JPG, PNG, scanned documents).
-* Supports **drag‑and‑drop** and **file picker** upload.
-* Real‑time file validation (type/size checks).
+- Upload **PDF files** and **image files** (JPG, PNG, scanned documents).
+- Supports **drag‑and‑drop** and **file picker** upload.
+- Real‑time file validation (type/size checks).
 
 ### **2. Text Extraction**
 
-* **PDF Parsing**: Extracts text from PDFs while preserving readable formatting.
-* **OCR (Optical Character Recognition)**:
+- **PDF Parsing**: Extracts text from PDFs while preserving readable formatting.
+- **OCR (Optical Character Recognition)**:
 
-  * Extracts text from scanned images using **Tesseract OCR**.
-  * Handles noisy or low‑resolution images using preprocessing.
+  - Extracts text from scanned images using **Tesseract OCR**.
+  - Handles noisy or low‑resolution images using preprocessing.
 
 ### **3. Engagement Insights**
 
-* Analyzes extracted content and suggests improvements such as:
+- Analyzes extracted content and suggests improvements such as:
 
-  * More engaging hooks
-  * Readability improvements
-  * Hashtag suggestions
-  * Content structure recommendations
+  - More engaging hooks
+  - Readability improvements
+  - Hashtag suggestions
+  - Content structure recommendations
 
 ---
 
@@ -37,17 +37,15 @@ This project fulfills the requirements of the **Social Media Content Analyzer** 
 
 ### **Frontend**
 
-* React / JavaScript
-* Modern UI components
-* File drag‑and‑drop support
+- React / JavaScript
+- Modern UI components
+- File drag‑and‑drop support
 
 ### **Backend / Processing**
 
-* Node.js / Express (if applicable)
-* Tesseract.js for OCR
-* pdf-parse or similar library for PDF text extraction
-
-
+- Node.js / Express (if applicable)
+- Tesseract.js for OCR
+- pdf-parse or similar library for PDF text extraction
 
 ---
 
@@ -55,14 +53,21 @@ This project fulfills the requirements of the **Social Media Content Analyzer** 
 
 ```
 SOCIAL-MEDIA-CONTENT-ANALYZER/
+│
 ├── backend/
 │   ├── controllers/
 │   │   ├── extractController.js
 │   │   └── ocrController.js
+│   │
 │   ├── routes/
 │   │   └── extractRoutes.js
+│   │
 │   ├── uploads/
-│   │   ├── (uploaded files...)
+│   │   └── (uploaded files...)
+│   │
+│   ├── services/
+│   │   └── geminiService.js     ← (Gemini ko yaha rakho – BEST PLACE)
+│   │
 │   ├── config.js
 │   ├── server.js
 │   ├── package.json
@@ -72,16 +77,20 @@ SOCIAL-MEDIA-CONTENT-ANALYZER/
 │   ├── src/
 │   │   ├── components/
 │   │   │   └── FileUpload.jsx
+│   │   │
 │   │   ├── pages/
 │   │   │   └── Home.jsx
+│   │   │
 │   │   ├── App.jsx
 │   │   ├── main.jsx
 │   │   └── styles.css
+│   │
 │   ├── package.json
 │   └── package-lock.json
 │
 ├── .gitignore
 └── README.md
+
 ```
 
 ---
@@ -131,44 +140,38 @@ npm run build
 
 ### **Engagement Analysis**
 
-* Extracted text is scanned for hashtags, keywords, readability.
-* Suggestions are generated based on content patterns.
+- Extracted text is scanned for hashtags, keywords, readability.
+- Suggestions are generated based on content patterns.
 
 ---
 
 ## 🛠 Technical Requirements (Fulfilled)
 
-* Clean, production‑quality code
-* Loading states for long-running tasks (OCR, PDF parsing)
-* Proper error handling
-* Modular component-based architecture
-* Simple, well-documented utilities
+- Clean, production‑quality code
+- Loading states for long-running tasks (OCR, PDF parsing)
+- Proper error handling
+- Modular component-based architecture
+- Simple, well-documented utilities
 
 ---
+
 ## ✔ Requirements Checklist
 
-| Requirement | Status |
-|------------|--------|
-| PDF Upload | ✔ Completed |
-| Image Upload | ✔ Completed |
-| Drag and Drop | ✔ Completed |
-| PDF Parsing | ✔ Using pdf-parse |
-| OCR | ✔ Using tesseract.js |
-| Loading UI | ✔ Yes |
-| Error Handling | ✔ Yes |
-| Documentation | ✔ Yes |
+| Requirement    | Status               |
+| -------------- | -------------------- |
+| PDF Upload     | ✔ Completed          |
+| Image Upload   | ✔ Completed          |
+| Drag and Drop  | ✔ Completed          |
+| PDF Parsing    | ✔ Using pdf-parse    |
+| OCR            | ✔ Using tesseract.js |
+| Loading UI     | ✔ Yes                |
+| Error Handling | ✔ Yes                |
+| Documentation  | ✔ Yes                |
 
 ---
-
-
 
 ## 📸 Screenshots (Add Later)
 
-* Upload screen
-* OCR/PDF preview
-* Results page
-
-
-
-
-
+- Upload screen
+- OCR/PDF preview
+- Results page
