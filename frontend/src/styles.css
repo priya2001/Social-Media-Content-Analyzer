@@ -1,0 +1,147 @@
+        /* Full Background - Fixed to cover entire screen */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      
+      body {
+          font-family: "Poppins", sans-serif;
+          background: linear-gradient(135deg, #6a11cb, #2575fc);
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          /* Ensure background covers entire viewport */
+          background-attachment: fixed;
+          background-size: cover;
+      }
+
+      /* Glass Card */
+      .container {
+          width: 90%;
+          max-width: 700px;
+          padding: 40px;
+          text-align: center;
+          background: rgba(255, 255, 255, 0.18);
+          backdrop-filter: blur(12px);
+          border-radius: 20px;
+          box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+          border: 1px solid rgba(255,255,255,0.3);
+          animation: fadeIn 0.7s ease;
+      }
+
+      /* Title */
+      .container h1 {
+          color: white;
+          font-size: 32px;
+          margin-bottom: 25px;
+          letter-spacing: 1px;
+      }
+
+      /* File Box */
+      .file-input-container {
+          width: 100%;
+          margin-bottom: 25px;
+      }
+      
+      input[type="file"] {
+          width: 100%;
+          padding: 14px;
+          border-radius: 12px;
+          border: 2px solid rgba(255, 255, 255, 0.6);
+          background: rgba(255, 255, 255, 0.4);
+          font-size: 15px;
+          outline: none;
+          transition: 0.3s ease;
+          color: black;
+      }
+
+      input[type="file"]:hover {
+          background: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Button */
+      button {
+        background: #ffffff;
+        color: #2575fc;
+        padding: 12px 32px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 25px;
+        margin-top: 20px;   /* ← Add this */
+        transition: 0.3s ease;
+        box-shadow: 0px 6px 18px rgba(255,255,255,0.4);
+        width: 100%;
+        max-width: 250px;
+    }
+    
+
+      button:hover {
+          transform: translateY(-2px);
+          background: #e9f1ff;
+      }
+
+      /* Textarea */
+      textarea {
+          width: 100%;
+          height: 350px;
+          padding: 15px;
+          border-radius: 15px;
+          border: 2px solid rgba(255,255,255,0.6);
+          font-size: 15px;
+          resize: none;
+          outline: none;
+          background: rgba(255, 255, 255, 0.35);
+          color: #000;
+      }
+
+      /* Animated Scrollbar */
+      textarea::-webkit-scrollbar {
+          width: 8px;
+      }
+
+      textarea::-webkit-scrollbar-thumb {
+          background: #ffffff;
+          border-radius: 10px;
+      }
+
+      /* Fade-in Animation */
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+          .container {
+              width: 95%;
+              padding: 25px;
+          }
+          
+          .container h1 {
+              font-size: 26px;
+          }
+          
+          textarea {
+              height: 300px;
+          }
+      }
+      
+      @media (max-width: 480px) {
+          .container {
+              padding: 20px;
+          }
+          
+          .container h1 {
+              font-size: 22px;
+          }
+          
+          textarea {
+              height: 250px;
+          }
+      }
