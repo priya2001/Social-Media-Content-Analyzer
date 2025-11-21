@@ -1,133 +1,168 @@
 # Social Media Content Analyzer
 
-A MERN-based application that extracts text from PDF files and image files using PDF parsing and OCR (Tesseract.js).  
-This tool helps analyze documents, scanned content, and social media screenshots by converting them into readable text.
+A production‑quality application designed to analyze uploaded PDF/image documents, extract text using PDF parsing & OCR, and provide actionable insights to improve social media engagement.
+
+This project fulfills the requirements of the **Social Media Content Analyzer** assignment, incorporating document upload, text extraction, OCR processing, clean UI/UX, and structured documentation.
 
 ---
 
 ## 🚀 Features
 
-### 📤 Document Upload
-- Upload PDF files
-- Upload Image files (JPG, PNG, scanned docs)
-- Drag-and-drop upload support
-- File validation on both frontend and backend
+### **1. Document Upload**
 
-### 📝 Text Extraction
-#### ✔ PDF Parsing
-Uses **pdf-parse** to extract text from PDF files.
+* Upload **PDF files** and **image files** (JPG, PNG, scanned documents).
+* Supports **drag‑and‑drop** and **file picker** upload.
+* Real‑time file validation (type/size checks).
 
-#### ✔ OCR (Optical Character Recognition)
-Uses **tesseract.js** to extract text from images.
+### **2. Text Extraction**
 
-### 💡 Additional Features
-- Loading indicators while processing
-- Clean UI built with React + Vite
-- Error handling for invalid files or extraction failures
-- Responsive design
+* **PDF Parsing**: Extracts text from PDFs while preserving readable formatting.
+* **OCR (Optical Character Recognition)**:
 
----
+  * Extracts text from scanned images using **Tesseract OCR**.
+  * Handles noisy or low‑resolution images using preprocessing.
 
-## 🛠 Tech Stack
+### **3. Engagement Insights**
 
-### 🎨 Frontend
-- React 19
-- Axios
-- Vite
-- Modern component-based UI
-- Drag-and-drop upload implemented manually
+* Analyzes extracted content and suggests improvements such as:
 
-
-
-
+  * More engaging hooks
+  * Readability improvements
+  * Hashtag suggestions
+  * Content structure recommendations
 
 ---
 
-### 🧰 Backend
-- Node.js
-- Express.js
-- Multer (file upload)
-- pdf-parse (PDF text extraction)
-- tesseract.js (Image OCR)
-- Sharp (image optimization)
-- CORS enabled
-- Nodemon for development
+## 🧰 Tech Stack
 
+### **Frontend**
+
+* React / JavaScript
+* Modern UI components
+* File drag‑and‑drop support
+
+### **Backend / Processing**
+
+* Node.js / Express (if applicable)
+* Tesseract.js for OCR
+* pdf-parse or similar library for PDF text extraction
 
 
 
 ---
 
-## 📂 Project Structure
+## 🏗 Project Structure (Generic)
 
-Social-Media-Content-Analyzer
+```
+SOCIAL-MEDIA-CONTENT-ANALYZER/
+├── backend/
+│   ├── controllers/
+│   │   ├── extractController.js
+│   │   └── ocrController.js
+│   ├── routes/
+│   │   └── extractRoutes.js
+│   ├── uploads/
+│   │   ├── (uploaded files...)
+│   ├── config.js
+│   ├── server.js
+│   ├── package.json
+│   └── package-lock.json
 │
-├── backend
-│ ├── server.js
-│ ├── routes/
-│ ├── controllers/
-│ ├── uploads/
-│ └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   └── FileUpload.jsx
+│   │   ├── pages/
+│   │   │   └── Home.jsx
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── styles.css
+│   ├── package.json
+│   └── package-lock.json
 │
-└── frontend
-├── src/
-│ ├── components/
-│ └── App.jsx
-└── package.json 
-
-
-## 🌐 API Endpoint
-
-### POST /api/upload
-
-Uploads a document and returns extracted text.
-
-## Response Example
-{
-"success": true,
-"type": "pdf" or "image",
-"text": "Extracted text here..."
-} 
-
-
-
-## ▶️ How to Run Locally
-
-### 1️⃣ Clone the repository
-git clone <your-repository-url>
-cd Social-Media-Content-Analyzer
-
-
-
-### 2️⃣ Install dependencies
-
-### Backend
-1. `cd frontend`
-2. `npm install`
-3. `npm start`
-
-
-### Frontend
-1. `cd frontend`
-2. `npm install`
-3. `npm run dev`
-
-
-Frontend → http://localhost:5173  
-Backend → http://localhost:5000  
+├── .gitignore
+└── README.md
+```
 
 ---
 
-## 🧪 Testing
+## ⚙️ Installation & Setup
 
-Upload:
-- PDFs  
-- Scanned documents  
-- Social media screenshots  
-- Posters  
-- Notes (OCR accuracy depends on clarity)
+### **1. Clone the Repository**
+
+```bash
+git clone <repo-url>
+cd project-folder
+```
+
+### **2. Install Dependencies**
+
+```bash
+npm install
+```
+
+### **3. Start Development Server**
+
+```bash
+npm run dev
+```
+
+### **4. Build for Production**
+
+```bash
+npm run build
+```
 
 ---
+
+## 📄 How It Works
+
+### **PDF Processing**
+
+1. User uploads a PDF.
+2. The PDF is parsed using a PDF text extraction library.
+3. Text is formatted and sent to the analyzer.
+
+### **OCR Processing**
+
+1. Uploaded image is passed to Tesseract OCR.
+2. Text is extracted even from scanned or low‑quality images.
+3. Cleaned text is used for further analysis.
+
+### **Engagement Analysis**
+
+* Extracted text is scanned for hashtags, keywords, readability.
+* Suggestions are generated based on content patterns.
+
+---
+
+## 🛠 Technical Requirements (Fulfilled)
+
+* Clean, production‑quality code
+* Loading states for long-running tasks (OCR, PDF parsing)
+* Proper error handling
+* Modular component-based architecture
+* Simple, well-documented utilities
+
+---
+
+## 📦 Deliverables
+
+### **1. Working Application URL**
+
+Add your deployed link here.
+
+### **2. GitHub Repository**
+
+Add repository link here.
+
+---
+
+## 📸 Screenshots (Add Later)
+
+* Upload screen
+* OCR/PDF preview
+* Results page
 
 ## ✔ Requirements Checklist
 
