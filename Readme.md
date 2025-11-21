@@ -1,127 +1,182 @@
-project:
-  name: "Social Media Content Analyzer"
-  description: >
-    A MERN-based application that extracts text from PDF and image files using
-    PDF parsing (pdf-parse) and OCR (Tesseract.js). It allows users to upload
-    documents via drag-and-drop and converts scanned or digital documents into
-    readable text.
+# Social Media Content Analyzer
 
-features:
-  document_upload:
-    - "Upload PDF files"
-    - "Upload image files (JPG, PNG, scanned documents)"
-    - "Drag-and-drop interface"
-    - "File type validation on frontend and backend"
+A MERN-based application that extracts text from PDF files and image files using PDF parsing and OCR (Tesseract.js).  
+This tool helps analyze documents, scanned content, and social media screenshots by converting them into readable text.
 
-  text_extraction:
-    pdf_parsing:
-      library: "pdf-parse"
-      description: "Extracts text from PDF files while maintaining formatting."
+---
 
-    ocr:
-      library: "tesseract.js"
-      description: "Extracts text from scanned image files."
+## 🚀 Features
 
-  additional_features:
-    - "Loading indicators while extraction is happening"
-    - "Responsive UI built using React + Vite"
-    - "Basic and helpful error handling"
-    - "Clean project structure following MERN practices"
+### 📤 Document Upload
+- Upload PDF files
+- Upload Image files (JPG, PNG, scanned docs)
+- Drag-and-drop upload support
+- File validation on both frontend and backend
 
-tech_stack:
-  frontend:
-    framework: "React 19"
-    build_tool: "Vite"
-    dependencies:
-      - "axios"
-      - "react"
-      - "react-dom"
-    dev_tools:
-      - "ESLint"
-      - "Vite Preview"
-    scripts:
-      dev: "npm run dev"
-      build: "npm run build"
-      preview: "npm run preview"
+### 📝 Text Extraction
+#### ✔ PDF Parsing
+Uses **pdf-parse** to extract text from PDF files.
 
-  backend:
-    environment: "Node.js + Express.js"
-    dependencies:
-      - "express"
-      - "multer"
-      - "pdf-parse"
-      - "tesseract.js"
-      - "sharp"
-      - "cors"
-    dev_dependencies:
-      - "nodemon"
-    scripts:
-      start: "npm start"
-      developer: "npm run dev"
+#### ✔ OCR (Optical Character Recognition)
+Uses **tesseract.js** to extract text from images.
 
-project_structure:
-  backend:
-    - "server.js"
-    - "routes/"
-    - "controllers/"
-    - "uploads/"
-    - "package.json"
-  frontend:
-    - "src/components/"
-    - "src/App.jsx"
-    - "package.json"
+### 💡 Additional Features
+- Loading indicators while processing
+- Clean UI built with React + Vite
+- Error handling for invalid files or extraction failures
+- Responsive design
 
-api:
-  upload_api:
-    endpoint: "/api/upload"
-    method: "POST"
-    request_type: "multipart/form-data"
-    response_example: |
-      {
-        "success": true,
-        "type": "pdf or image",
-        "text": "Extracted text here..."
-      }
+---
 
-run_locally:
-  steps:
-    - step: "Clone the repository"
-      command: "git clone <your-repository-url>"
-    - step: "Navigate to project folder"
-      command: "cd Social-Media-Content-Analyzer"
+## 🛠 Tech Stack
 
-  backend_setup:
-    - "cd backend"
-    - "npm install"
-    - "npm run dev"
+### 🎨 Frontend
+- React 19
+- Axios
+- Vite
+- Modern component-based UI
+- Drag-and-drop upload implemented manually
 
-  frontend_setup:
-    - "cd frontend"
-    - "npm install"
-    - "npm run dev"
+**Frontend Scripts**
+npm run dev
+npm run build
+npm run preview
 
-  local_servers:
-    frontend: "http://localhost:5173"
-    backend: "http://localhost:5000"
+markdown
+Copy code
 
-testing:
-  supported_files:
-    - "PDF documents"
-    - "Scanned images"
-    - "Posters"
-    - "Screenshots"
-    - "Notes (depends on clarity)"
-  notes: "OCR accuracy varies based on lighting, clarity, and handwriting."
+---
 
-requirements_checklist:
-  PDF_upload: true
-  Image_upload: true
-  Drag_and_drop: true
-  PDF_parsing: true
-  OCR_extraction: true
-  Loading_UI: true
-  Error_handling: true
-  Documentation: true
+### 🧰 Backend
+- Node.js
+- Express.js
+- Multer (file upload)
+- pdf-parse (PDF text extraction)
+- tesseract.js (Image OCR)
+- Sharp (image optimization)
+- CORS enabled
+- Nodemon for development
 
-license:
-  type: "MIT License"
+**Backend Scripts**
+npm start
+npm run dev
+
+yaml
+Copy code
+
+---
+
+## 📂 Project Structure
+
+Social-Media-Content-Analyzer
+│
+├── backend
+│ ├── server.js
+│ ├── routes/
+│ ├── controllers/
+│ ├── uploads/
+│ └── package.json
+│
+└── frontend
+├── src/
+│ ├── components/
+│ └── App.jsx
+└── package.json
+
+yaml
+Copy code
+
+---
+
+## 🌐 API Endpoint
+
+### POST /api/upload
+
+Uploads a document and returns extracted text.
+
+**Response Example**
+{
+"success": true,
+"type": "pdf" or "image",
+"text": "Extracted text here..."
+}
+
+yaml
+Copy code
+
+---
+
+## ▶️ How to Run Locally
+
+### 1️⃣ Clone the repository
+git clone <your-repository-url>
+cd Social-Media-Content-Analyzer
+
+shell
+Copy code
+
+### 2️⃣ Install dependencies
+
+#### Backend:
+cd backend
+npm install
+
+shell
+Copy code
+
+#### Frontend:
+cd ../frontend
+npm install
+
+shell
+Copy code
+
+### 3️⃣ Start the servers
+
+#### Start Backend:
+npm run dev
+
+shell
+Copy code
+
+#### Start Frontend:
+npm run dev
+
+yaml
+Copy code
+
+Frontend → http://localhost:5173  
+Backend → http://localhost:5000  
+
+---
+
+## 🧪 Testing
+
+Upload:
+- PDFs  
+- Scanned documents  
+- Social media screenshots  
+- Posters  
+- Notes (OCR accuracy depends on clarity)
+
+---
+
+## ✔ Requirements Checklist
+
+| Requirement | Status |
+|------------|--------|
+| PDF Upload | ✔ Completed |
+| Image Upload | ✔ Completed |
+| Drag and Drop | ✔ Completed |
+| PDF Parsing | ✔ Using pdf-parse |
+| OCR | ✔ Using tesseract.js |
+| Loading UI | ✔ Yes |
+| Error Handling | ✔ Yes |
+| Documentation | ✔ Yes |
+
+---
+
+## 📜 License
+MIT License
+
+
