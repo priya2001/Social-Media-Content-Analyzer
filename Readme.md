@@ -145,25 +145,6 @@ npm run build
 * Simple, well-documented utilities
 
 ---
-
-## 📦 Deliverables
-
-### **1. Working Application URL**
-
-Add your deployed link here.
-
-### **2. GitHub Repository**
-
-Add repository link here.
-
----
-
-## 📸 Screenshots (Add Later)
-
-* Upload screen
-* OCR/PDF preview
-* Results page
-
 ## ✔ Requirements Checklist
 
 | Requirement | Status |
@@ -178,6 +159,16 @@ Add repository link here.
 | Documentation | ✔ Yes |
 
 ---
+
+
+
+## 📸 Screenshots (Add Later)
+
+* Upload screen
+* OCR/PDF preview
+* Results page
+
+
 
 
 
