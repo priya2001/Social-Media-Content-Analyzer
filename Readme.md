@@ -172,4 +172,4 @@ npm run build
 ---
 
 ### Screenshots
-![App Output](./screenshots.png)
+![App Output](./image.png)
