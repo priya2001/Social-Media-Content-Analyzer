@@ -32,8 +32,7 @@ This project fulfills the requirements of the **Social Media Content Analyzer** 
   - Content structure recommendations
 
 ---
-### Screenshots
-![App Output](./screenshots.png)
+
 
 ## 🧰 Tech Stack
 
@@ -172,4 +171,5 @@ npm run build
 
 ---
 
-
+### Screenshots
+![App Output](./screenshots.png)
