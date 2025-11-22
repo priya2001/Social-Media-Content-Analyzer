@@ -33,7 +33,7 @@ This project fulfills the requirements of the **Social Media Content Analyzer** 
 
 ---
 ### Screenshots
-![App Output](image/screenshots.png)
+![App Output](./screenshots.png)
 
 ## 🧰 Tech Stack
 
