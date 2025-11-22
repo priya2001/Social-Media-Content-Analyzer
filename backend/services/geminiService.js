@@ -4,7 +4,7 @@ const rewriteWithGemini = async (inputText) => {
   const apiKey = process.env.GEMINI_API_KEY;
 
   if (!apiKey) {
-    console.log("❌ GEMINI_API_KEY missing");
+    console.log(" GEMINI_API_KEY missing");
     return "API Key missing";
   }
 

@@ -44,7 +44,7 @@ function FileUpload() {
       <div className="two-box-wrapper">
         {/* LEFT BOX */}
         <div className="box">
-          <h2>Upload File Input</h2>
+          <h2 className="box-title">Upload Files</h2>
 
           <input
             type="file"
