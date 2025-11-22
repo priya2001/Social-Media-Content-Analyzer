@@ -170,8 +170,5 @@ npm run build
 
 ---
 
-## 📸 Screenshots (Add Later)
-
-- Upload screen
-- OCR/PDF preview
-- Results page
+### Screenshots
+![App Output](image/image.png)
