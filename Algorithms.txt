@@ -1,0 +1,7 @@
+How Algorithms Are Used in This Project (200 Words)
+
+The Social Media Content Analyzer project uses multiple algorithms to extract, process, and analyze text from PDF and image files. The first major algorithm is the PDF text extraction algorithm, implemented using libraries like pdf-parse. This algorithm reads the PDF file as binary data, identifies embedded text objects on each page, and reconstructs them in the correct reading order. It removes unnecessary formatting, decodes character sets, and finally produces clean, structured text that can be analyzed further.
+
+The second important algorithm is the OCR (Optical Character Recognition) algorithm, powered by Tesseract. This algorithm is used when the uploaded file is an image or scanned PDF. It begins with preprocessing steps such as grayscale conversion, noise removal, and thresholding. Then, it segments the image into lines, words, and characters. Tesseract uses machine-learning-based pattern recognition to identify shapes and match them with trained character models. The extracted text is then cleaned and refined.
+
+Finally, the project uses NLP algorithms through the Gemini API to analyze the extracted content. These algorithms perform tokenization, keyword detection, readability checks, and pattern analysis to generate insights such as hooks, hashtag suggestions, and engagement improvements. Together, these algorithms make the application intelligent and highly effective.
