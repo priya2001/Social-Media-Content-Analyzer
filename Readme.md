@@ -1,175 +1,118 @@
 # Social Media Content Analyzer
 
-A production‑quality application designed to analyze uploaded PDF/image documents, extract text using PDF parsing & OCR, and provide actionable insights to improve social media engagement.
+An end-to-end MERN reference application that lets marketers drop a PDF or screenshot of draft social copy, extracts the text, and returns engagement-focused insights (sentiment, readability, hashtag usage, suggestions, etc.).
 
-This project fulfills the requirements of the **Social Media Content Analyzer** assignment, incorporating document upload, text extraction, OCR processing, clean UI/UX, and structured documentation.
+The project is split into:
 
----
+- `backend/`: Node + Express API that handles uploads, extracts text from PDFs (via `pdf-parse`) or images (via `tesseract.js`), and runs heuristic analysis.
+- `frontend/`: React (Vite) client that offers drag-and-drop uploads, loading states, and renders extracted text, metrics, and recommendations.
 
-## 🚀 Features
+## Features
 
-### **1. Document Upload**
+- Drag-and-drop or file picker upload for PDFs and common image formats (PNG/JPG/WEBP).
+- OCR support through Tesseract for scanned/image-based documents.
+- Text analysis heuristics: word/character counts, Flesch reading ease, sentiment, hashtag & mention detection, CTA hints.
+- Human-readable suggestions tailored to common social media best practices.
+- Basic error handling, input restrictions (10 MB limit), and descriptive loading states.
 
-- Upload **PDF files** and **image files** (JPG, PNG, scanned documents).
-- Supports **drag‑and‑drop** and **file picker** upload.
-- Real‑time file validation (type/size checks).
+## Prerequisites
 
-### **2. Text Extraction**
+- Node.js >= 18
+- npm >= 9
+- (Optional) MongoDB or any datastore if you plan to persist analysis history. The current build is stateless.
 
-- **PDF Parsing**: Extracts text from PDFs while preserving readable formatting.
-- **OCR (Optical Character Recognition)**:
+## Local Development
 
-  - Extracts text from scanned images using **Tesseract OCR**.
-  - Handles noisy or low‑resolution images using preprocessing.
-
-### **3. Engagement Insights**
-
-- Analyzes extracted content and suggests improvements such as:
-
-  - More engaging hooks
-  - Readability improvements
-  - Hashtag suggestions
-  - Content structure recommendations
-
----
-
-
-## 🧰 Tech Stack
-
-### **Frontend**
-
-- React / JavaScript
-- Modern UI components
-- File drag‑and‑drop support
-
-### **Backend / Processing**
-
-- Node.js / Express (if applicable)
-- Tesseract.js for OCR
-- pdf-parse or similar library for PDF text extraction
-
----
-
-## 🏗 Project Structure (Generic)
-
-```
-SOCIAL-MEDIA-CONTENT-ANALYZER/
-│
-├── backend/
-│   ├── controllers/
-│   │   ├── extractController.js
-│   │   └── ocrController.js
-│   │
-│   ├── routes/
-│   │   └── extractRoutes.js
-│   │
-│   ├── uploads/
-│   │   └── (uploaded files...)
-│   │
-│   ├── services/
-│   │   └── geminiService.js     ← (Gemini service)
-│   │
-│   ├── config.js
-│   ├── server.js
-│   ├── package.json
-│   └── package-lock.json
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   └── FileUpload.jsx
-│   │   │
-│   │   ├── pages/
-│   │   │   └── Home.jsx
-│   │   │
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── styles.css
-│   │
-│   ├── package.json
-│   └── package-lock.json
-│
-├── .gitignore
-└── README.md
-
-```
-
----
-
-## ⚙️ Installation & Setup
-
-### **1. Clone the Repository**
+### 1. Backend API
 
 ```bash
-git clone <repo-url>
-cd project-folder
-```
-
-### **2. Install Dependencies**
-
-```bash
+cd backend
 npm install
-```
-
-### **3. Start Development Server**
-
-```bash
+cp env.example .env    # Manually create .env on Windows if copy fails
 npm run dev
 ```
 
-### **4. Build for Production**
+Environment variables (`backend/env.example`):
+
+| Key            | Description                                   | Default             |
+|----------------|-----------------------------------------------|---------------------|
+| `PORT`         | API port                                      | `5000`              |
+| `FRONTEND_URLS`| Comma-separated allowed origins for CORS      | `http://localhost:5173` |
+
+### 2. Frontend client
 
 ```bash
-npm run build
+cd frontend
+npm install
+cp env.example .env    # Set VITE_API_URL if deploying separately
+npm run dev            # Opens http://localhost:5173
 ```
 
----
+`frontend/env.example` contains `VITE_API_URL` (default `http://localhost:5000`).
 
-## 📄 How It Works
+### 3. Build & Deploy
 
-### **PDF Processing**
+- **Backend**: Deploy to Render, Railway, or Azure App Service. Set the same environment variables as above. Render example:
+  - Build command: `npm install`
+  - Start command: `npm run start`
+- **Frontend**: Deploy to Netlify, Vercel, or Azure Static Web Apps.
+  - Build command: `npm run build`
+  - Publish directory: `dist`
+  - Environment variable: `VITE_API_URL` pointing to the hosted API.
 
-1. User uploads a PDF.
-2. The PDF is parsed using a PDF text extraction library.
-3. Text is formatted and sent to the analyzer.
+Once both sides are deployed, capture the live URLs to satisfy the deliverables:
 
-### **OCR Processing**
+1. Working application URL (hosted frontend hitting the hosted API)
+2. GitHub repository containing this source code and README.
 
-1. Uploaded image is passed to Tesseract OCR.
-2. Text is extracted even from scanned or low‑quality images.
-3. Cleaned text is used for further analysis.
+## API Reference
 
-### **Engagement Analysis**
+### `POST /api/analyze`
 
-- Extracted text is scanned for hashtags, keywords, readability.
-- Suggestions are generated based on content patterns.
+| Field      | Type   | Notes                                    |
+|------------|--------|------------------------------------------|
+| `document` | file   | Required. PDF or image (png/jpg/webp).   |
 
----
+Response:
 
-## 🛠 Technical Requirements (Fulfilled)
+```json
+{
+  "rawText": "string",
+  "analysis": {
+    "metrics": {
+      "wordCount": 123,
+      "charCount": 789,
+      "sentimentScore": 0.18,
+      "readabilityScore": 72,
+      "hashtags": ["#launch"],
+      "mentions": ["@brand"]
+    },
+    "summary": "First two sentences …",
+    "suggestions": ["Add a CTA", "..."]
+  }
+}
+```
 
-- Clean, production‑quality code
-- Loading states for long-running tasks (OCR, PDF parsing)
-- Proper error handling
-- Modular component-based architecture
-- Simple, well-documented utilities
+HTTP 4xx/5xx responses include a `message` for display on the frontend.
 
----
+## Testing & Validation
 
-## ✔ Requirements Checklist
+- `frontend`: `npm run build` ensures the UI compiles. Add component tests (Vitest + Testing Library) as next steps.
+- `backend`: Current project is lightweight; consider adding Jest tests that mock the extraction service for future robustness.
 
-| Requirement    | Status               |
-| -------------- | -------------------- |
-| PDF Upload     | ✔ Completed          |
-| Image Upload   | ✔ Completed          |
-| Drag and Drop  | ✔ Completed          |
-| PDF Parsing    | ✔ Using pdf-parse    |
-| OCR            | ✔ Using tesseract.js |
-| Loading UI     | ✔ Yes                |
-| Error Handling | ✔ Yes                |
-| Documentation  | ✔ Yes                |
+## Future Enhancements
 
----
+- Persist previous analyses with MongoDB so users can revisit insights.
+- Hook up third-party NLP APIs (OpenAI, AWS Comprehend) for richer suggestions.
+- Support multi-page PDFs with highlights or inline annotations.
+- OAuth login for multi-user history and usage tracking.
 
-### Screenshots
-![App Output](./image.png)
+## Troubleshooting
+
+- **Large files**: increase `multer` `fileSize` limit in `src/server.js`.
+- **Tesseract performance**: cache workers or move OCR to a worker queue if throughput grows.
+- **CORS issues**: verify `FRONTEND_URLS` matches your deployed frontend origin exactly (protocol + host).
+
+Feel free to fork and iterate—the codebase intentionally stays small and approachable so you can plug in more advanced ML/NLP services later.
+
+
