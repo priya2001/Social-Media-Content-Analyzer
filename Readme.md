@@ -8,9 +8,12 @@ The project is split into:
 - `frontend/`: React (Vite) client that offers drag-and-drop uploads, loading states, and renders extracted text, metrics, and recommendations.
 
 ### Screenshots
-![App Output](image1.png)
+
+![App Output](image/image1.png)
+
 ### Output
-![App Output](image2.png)
+
+![App Output](image/image2.png)
 
 ## Features
 
@@ -39,10 +42,10 @@ npm run dev
 
 Environment variables (`backend/env.example`):
 
-| Key            | Description                                   | Default             |
-|----------------|-----------------------------------------------|---------------------|
-| `PORT`         | API port                                      | `5000`              |
-| `FRONTEND_URLS`| Comma-separated allowed origins for CORS      | `http://localhost:5173` |
+| Key             | Description                              | Default                 |
+| --------------- | ---------------------------------------- | ----------------------- |
+| `PORT`          | API port                                 | `5000`                  |
+| `FRONTEND_URLS` | Comma-separated allowed origins for CORS | `http://localhost:5173` |
 
 ### 2. Frontend client
 
@@ -74,9 +77,9 @@ Once both sides are deployed, capture the live URLs to satisfy the deliverables:
 
 ### `POST /api/analyze`
 
-| Field      | Type   | Notes                                    |
-|------------|--------|------------------------------------------|
-| `document` | file   | Required. PDF or image (png/jpg/webp).   |
+| Field      | Type | Notes                                  |
+| ---------- | ---- | -------------------------------------- |
+| `document` | file | Required. PDF or image (png/jpg/webp). |
 
 Response:
 
@@ -119,5 +122,3 @@ HTTP 4xx/5xx responses include a `message` for display on the frontend.
 - **CORS issues**: verify `FRONTEND_URLS` matches your deployed frontend origin exactly (protocol + host).
 
 Feel free to fork and iterate—the codebase intentionally stays small and approachable so you can plug in more advanced ML/NLP services later.
-
-
