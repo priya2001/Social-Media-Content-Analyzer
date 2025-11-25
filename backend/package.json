@@ -4,8 +4,8 @@
   "description": "API for extracting text from PDFs and images, then generating social content insights.",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "start": "node src/server.js",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no automated tests yet\" && exit 0"
   },
   "keywords": [],
@@ -25,3 +25,4 @@
     "nodemon": "^3.1.11"
   }
 }
+

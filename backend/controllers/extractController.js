@@ -15,9 +15,9 @@ export const extractTextFromImage = async (req, res) => {
     });
 
     const rawText = result.data.text;
-    const prettyText = await rewriteWithGemini(rawText);
+    // const prettyText = await rewriteWithGemini(rawText);
 
-    res.json({ rawText, prettyText });
+    res.json({ rawText });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Image extraction failed" });
@@ -33,9 +33,8 @@ export const extractTextFromPDF = async (req, res) => {
     const pdfData = await pdfParse(data);
 
     const rawText = pdfData.text;
-    const prettyText = await rewriteWithGemini(rawText);
 
-    res.json({ rawText, prettyText });
+    res.json({ rawText });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "PDF extraction failed" });
