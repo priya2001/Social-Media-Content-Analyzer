@@ -9,11 +9,11 @@ The project is split into:
 
 ### Screenshots
 
-![App Output](image/image1.png)
+![App Output](image/image3.png)
 
 ### Output
 
-![App Output](image/image2.png)
+![App Output](image/image4.png)
 
 ## Features
 
