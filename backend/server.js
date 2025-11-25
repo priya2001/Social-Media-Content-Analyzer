@@ -10,6 +10,9 @@ app.use(express.json());
 
 // Routes
 app.use("/api/extract", extractRoutes);
+app.get("/", (req, res) => {
+  res.status(201).send("Welcome to my project.");
+});
 
 app.listen(5000, () => {
   console.log("Server running on http://localhost:5000");
