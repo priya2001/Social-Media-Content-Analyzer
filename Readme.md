@@ -7,6 +7,11 @@ The project is split into:
 - `backend/`: Node + Express API that handles uploads, extracts text from PDFs (via `pdf-parse`) or images (via `tesseract.js`), and runs heuristic analysis.
 - `frontend/`: React (Vite) client that offers drag-and-drop uploads, loading states, and renders extracted text, metrics, and recommendations.
 
+### Screenshots
+![App Output](image1.png)
+### Output
+![App Output](image2.png)
+
 ## Features
 
 - Drag-and-drop or file picker upload for PDFs and common image formats (PNG/JPG/WEBP).
