@@ -4,7 +4,6 @@
 import Tesseract from "tesseract.js";
 import pdfParse from "pdf-parse";
 import fs from "fs";
-import { rewriteWithGemini } from "../services/geminiService.js";
 
 // For Images
 export const extractTextFromImage = async (req, res) => {
